@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-gold-50: #fbf8ed;
+  --color-gold-100: #f4ecd0;
+  --color-gold-200: #e9d7a2;
+  --color-gold-300: #dbbb6c;
+  --color-gold-400: #C5A059; /* Themed Gold */
+  --color-gold-500: #b08d4a;
+  --color-gold-600: #94743c;
+  --color-gold-700: #755b2f;
+  
+  --color-beige-50: #F9F7F2; /* Themed Background */
+  --color-beige-100: #F2EFE9;
+  --color-beige-200: #e8e1d5;
+  --color-beige-300: #d4c6b1;
+}
+
+@layer base {
+  body {
+    @apply bg-beige-50 text-stone-900 antialiased selection:bg-gold-400 selection:text-white;
+    font-variant-ligatures: none;
+  }
+}
+
+.serif {
+  @apply font-serif;
+}
+
+.gold-accent {
+  @apply text-gold-400;
+}
+
+.hero-gradient {
+  background: linear-gradient(rgba(249, 247, 242, 0.92), rgba(249, 247, 242, 0.85)), url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1024');
+  background-size: cover;
+  background-position: center;
+}
+
+.gold-text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #C5A059 0%, #94743c 100%);
+}
