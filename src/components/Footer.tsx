@@ -4,13 +4,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
           <div className="lg:col-span-1">
-            <div className="flex items-baseline space-x-2 mb-8">
-              <span className="text-2xl font-semibold tracking-tighter font-serif uppercase text-stone-900">
-                OM <span className="text-gold-400">Infra</span>
-              </span>
+            <div className="flex items-center space-x-3 mb-8">
+              <img src="/logo.png" alt="OM Infra Projects Logo" className="h-20 w-auto max-w-[200px] object-contain mix-blend-multiply" />
             </div>
             <p className="text-stone-500 text-[10px] uppercase font-semibold leading-loose tracking-[0.1em] mb-10 italic">
-              "Quality in every detail. Commitment in every step. Excellence in every project."
+              "At OM Infra Projects, we provide end-to-end construction solutions with a focus on quality, precision, and timely delivery."
             </p>
           </div>
 
@@ -37,12 +35,13 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-400 mb-8 font-semibold">Contact</h4>
             <div className="p-6 bg-beige-50 border border-stone-200">
-              <div className="text-[11px] font-bold mb-1 tracking-widest text-stone-900">ANAKAPALLI, AP</div>
+              <div className="text-[11px] font-bold mb-1 tracking-widest text-stone-900">ANAKAPALLI, VISHAKAPATNAM</div>
               <p className="text-[10px] font-medium text-stone-500 uppercase tracking-widest leading-relaxed">
                 India
               </p>
-              <div className="mt-6 flex flex-col gap-2">
-                 <span className="text-[11px] font-bold text-stone-900 uppercase tracking-widest">projects@ominfra.com</span>
+              <div className="mt-6 flex flex-col gap-3">
+                 <span className="text-[11px] font-bold text-stone-900 uppercase tracking-widest">ominfraprojects0@gmail.com</span>
+                 <span className="text-[11px] font-bold text-stone-900 uppercase tracking-widest">+91 7661056224 <br/> +91 7816099379</span>
               </div>
             </div>
           </div>

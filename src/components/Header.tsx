@@ -25,29 +25,29 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Top Bar - Only on desktop and if not scrolled */}
         {!isScrolled && (
-          <div className="hidden lg:flex justify-between items-center pb-4 mb-4 border-b border-white/20 text-xs text-stone-600 font-medium tracking-widest uppercase">
+          <div className="hidden lg:flex justify-between items-center pb-4 mb-4 border-b border-white/20 text-[10px] text-stone-600 font-medium tracking-widest uppercase">
             <div className="flex gap-8">
               <span className="flex items-center gap-2">
-                <Phone size={14} className="text-gold-400" /> +91 [Available on Request]
+                <Phone size={14} className="text-gold-400" /> +91 7661056224 , +91 7816099379
               </span>
               <span className="flex items-center gap-2">
-                <Mail size={14} className="text-gold-400" /> info@ominfraprojects.com
+                <Mail size={14} className="text-gold-400" /> ominfraprojects0@gmail.com
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <MapPin size={14} className="text-gold-400" /> Anakapalli, India
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-2">
+                <MapPin size={14} className="text-gold-400" /> Anakapalli, Vishakapatnam
+              </span>
+              <a href="https://www.instagram.com/ominfraprojects_?igsh=MXFkNDAzcDByc2Zqbg==" target="_blank" rel="noreferrer" className="text-gold-400 hover:text-gold-500 transition-colors">
+                Instagram
+              </a>
             </div>
           </div>
         )}
 
         <div className="flex justify-between items-center">
-          <a href="#" className="flex items-baseline space-x-2 group">
-            <span className="text-2xl font-semibold tracking-tighter font-serif uppercase text-stone-900 group-hover:text-gold-400 transition-colors">
-              OM <span className="text-gold-400">Infra</span>
-            </span>
-            <span className="text-[10px] uppercase font-semibold tracking-[0.2em] border-l border-stone-300 pl-2 text-stone-500 hidden sm:inline">
-              Precision & Integrity
-            </span>
+          <a href="#" className="flex items-center space-x-3 group">
+            <img src="/logo.png" alt="OM Infra Projects Logo" className="h-16 md:h-20 w-auto max-w-[180px] md:max-w-xs object-contain mix-blend-multiply" />
           </a>
 
           {/* Desktop Nav */}
