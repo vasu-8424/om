@@ -25,8 +25,27 @@ const portfolioItems = [
     category: 'Defence Infrastructure',
     img: '/military engineer services.png',
     desc: 'High-specification defence infrastructure works delivered with strict compliance standards.'
+  },
+  {
+    title: 'MES Site Works — Phase 2',
+    category: 'Military Engineering',
+    img: '/mes 2.png',
+    desc: 'Continued MES site works focusing on structural quality and execution discipline across Phase 2 operations.'
+  },
+  {
+    title: 'MES Site Works — Phase 3',
+    category: 'Military Engineering',
+    img: '/mes 3.png',
+    desc: 'Phase 3 MES project execution showcasing on-ground construction progress and site management.'
+  },
+  {
+    title: 'MES Site Works — Phase 4',
+    category: 'Military Engineering',
+    img: '/mes 4.png',
+    desc: 'Final phase MES construction work completed under strict quality control and MES compliance standards.'
   }
 ];
+
 
 const Portfolio = () => {
   const [selected, setSelected] = useState<number | null>(null);

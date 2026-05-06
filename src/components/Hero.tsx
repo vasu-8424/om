@@ -27,7 +27,7 @@ const Hero = () => {
         >
           <div className="mb-4">
             <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.4em] text-gold-400">
-              Engineering Distinction since 20XX
+              Engineering Distinction since 2025
             </span>
           </div>
 
@@ -63,14 +63,15 @@ const Hero = () => {
       <div className="absolute bottom-0 left-0 w-full border-t border-white/10 bg-black/75 backdrop-blur-md z-10">
         <div className="max-w-7xl mx-auto px-0 flex overflow-x-auto scrollbar-none">
           {[
-            { label: 'Projects', value: '150+' },
-            { label: 'Experience', value: '10+ Yrs' },
-            { label: 'Engineers', value: '25+' },
-            { label: 'Satisfaction', value: '100%' }
+            { label: 'Homes Under Execution', value: '49+' },
+            { label: 'Govt Projects Delivered', value: '₹1 Cr+' },
+            { label: 'Standard Execution', value: 'MES' },
+            { label: 'Quality Commitment', value: '100%' },
+            { label: 'Established', value: 'Since 2023' }
           ].map((stat, i) => (
             <div
               key={stat.label}
-              className={`py-4 px-4 sm:px-6 flex-1 min-w-[80px] text-center flex-shrink-0 ${i !== 3 ? 'border-r border-white/10' : ''}`}
+              className={`py-4 px-4 sm:px-6 flex-1 min-w-[80px] text-center flex-shrink-0 ${i !== 4 ? 'border-r border-white/10' : ''}`}
             >
               <div className="text-base sm:text-lg font-serif text-gold-400 mb-0.5 whitespace-nowrap">{stat.value}</div>
               <div className="text-[7px] sm:text-[8px] uppercase tracking-[0.15em] font-bold text-stone-500 whitespace-nowrap">{stat.label}</div>

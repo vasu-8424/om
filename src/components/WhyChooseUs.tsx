@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
           >
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-gold-400 mb-3 block">Why Choose Us</span>
             <h2 className="font-serif text-3xl md:text-4xl font-normal text-stone-100 tracking-tight mb-5 italic leading-tight">
-              Execution meets <span className="text-gold-400 not-italic font-semibold">Mastery</span>.
+              Built on Trust. Backed by <span className="text-gold-400 not-italic font-semibold">Expertise</span>.
             </h2>
             <p className="text-stone-400 text-sm leading-relaxed mb-8 font-light">
               OM Infra Projects bridges technical engineering and client-focused project management — from first survey to final finish.

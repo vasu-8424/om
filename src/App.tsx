@@ -16,7 +16,6 @@ export default function App() {
       <main>
         {/* ── TOP SECTIONS (right below hero) ── */}
         <Hero />
-        <About />
         <Process />
         <Portfolio />
         <Contact />
@@ -25,6 +24,9 @@ export default function App() {
         <WhyChooseUs />
         <Services />
         <ValueProposition />
+
+        {/* ── OUR TEAM — bottom of site ── */}
+        <About />
       </main>
       <Footer />
     </div>

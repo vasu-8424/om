@@ -61,7 +61,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-[9px] font-bold text-stone-600 uppercase tracking-[0.2em]">
-            © 2026 OM Infra Projects. Precision & Integrity.
+            © 2025 OM Infra Projects. Precision & Integrity.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-[9px] font-bold text-stone-600 uppercase tracking-widest hover:text-gold-400 transition-colors">Privacy</a>
