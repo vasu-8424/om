@@ -14,16 +14,32 @@
   --color-gold-600: #94743c;
   --color-gold-700: #755b2f;
   
-  --color-beige-50: #ffffff; /* Themed Background matching logo */
-  --color-beige-100: #fcfcfc;
-  --color-beige-200: #f5f5f5;
-  --color-beige-300: #e5e5e5;
+  --color-beige-50: #000000; /* Black Background */
+  --color-beige-100: #0d0d0d;
+  --color-beige-200: #1a1a1a;
+  --color-beige-300: #2a2a2a;
 }
 
 @layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+  }
   body {
-    @apply bg-beige-50 text-stone-900 antialiased selection:bg-gold-400 selection:text-white;
+    @apply bg-black text-stone-100 antialiased selection:bg-gold-400 selection:text-black;
     font-variant-ligatures: none;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -36,9 +52,14 @@
 }
 
 .hero-gradient {
-  background: linear-gradient(rgba(249, 247, 242, 0.92), rgba(249, 247, 242, 0.85)), url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1024');
-  background-size: cover;
-  background-position: center;
+  background-color: #000000;
+  position: relative;
+}
+
+/* Make white-background logo transparent on dark/black backgrounds */
+.logo-on-dark {
+  mix-blend-mode: screen;
+  filter: brightness(1.1) contrast(1.05);
 }
 
 .gold-text-gradient {

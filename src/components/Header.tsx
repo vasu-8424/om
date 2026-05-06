@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Phone, Mail, MapPin, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -8,8 +8,15 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Close menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 768) setIsMenuOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
   const navLinks = [
@@ -21,91 +28,107 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm border-b border-gold-200/30' : 'bg-transparent py-5'}`}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        {/* Top Bar - Only on desktop and if not scrolled */}
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/96 backdrop-blur-md py-1.5 shadow-lg border-b border-white/10' : 'bg-black py-2'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+
+        {/* Top info bar — large desktop only */}
         {!isScrolled && (
-          <div className="hidden lg:flex justify-between items-center pb-4 mb-4 border-b border-white/20 text-[10px] text-stone-600 font-medium tracking-widest uppercase">
-            <div className="flex gap-8">
-              <span className="flex items-center gap-2">
-                <Phone size={14} className="text-gold-400" /> +91 7661056224 , +91 7816099379
-              </span>
-              <span className="flex items-center gap-2">
-                <Mail size={14} className="text-gold-400" /> ominfraprojects0@gmail.com
-              </span>
+          <div className="hidden xl:flex justify-between items-center pb-2 mb-2 border-b border-white/10 text-[9px] text-stone-500 font-medium tracking-widest uppercase">
+            <div className="flex gap-6">
+              <span className="flex items-center gap-1.5"><Phone size={10} className="text-gold-400" /> +91 7661056224 · +91 7816099379</span>
+              <span className="flex items-center gap-1.5"><Mail size={10} className="text-gold-400" /> ominfraprojects0@gmail.com</span>
             </div>
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-2">
-                <MapPin size={14} className="text-gold-400" /> Anakapalli, Vishakapatnam
-              </span>
-              <a href="https://www.instagram.com/ominfraprojects_?igsh=MXFkNDAzcDByc2Zqbg==" target="_blank" rel="noreferrer" className="text-gold-400 hover:text-gold-500 transition-colors">
-                Instagram
-              </a>
+              <span className="flex items-center gap-1.5"><MapPin size={10} className="text-gold-400" /> Anakapalli, Vishakapatnam</span>
+              <a href="https://www.instagram.com/ominfraprojects_?igsh=MXFkNDAzcDByc2Zqbg==" target="_blank" rel="noreferrer" className="text-gold-400 hover:text-gold-300 transition-colors">Instagram</a>
             </div>
           </div>
         )}
 
+        {/* Main nav row */}
         <div className="flex justify-between items-center">
-          <a href="#" className="flex items-center space-x-3 group">
-            <img src="/logo.png" alt="OM Infra Projects Logo" className="h-16 md:h-20 w-auto max-w-[180px] md:max-w-xs object-contain mix-blend-multiply" />
+
+          {/* Logo — bigger on all screen sizes */}
+          <a href="#" className="flex items-center flex-shrink-0">
+            <img
+              src="/logo.png"
+              alt="OM Infra Projects"
+              className="h-20 md:h-24 w-auto object-contain logo-on-dark"
+              style={{ maxWidth: '240px' }}
+            />
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-[11px] font-semibold tracking-[0.2em] uppercase transition-colors ${isScrolled ? 'text-stone-600 hover:text-gold-400' : 'text-stone-800 hover:text-gold-400'}`}
+                className="text-[10px] font-semibold tracking-[0.18em] uppercase text-stone-400 hover:text-gold-400 transition-colors whitespace-nowrap"
               >
                 {link.name}
               </a>
             ))}
-            <div className="h-4 w-[1px] bg-stone-300 mx-2"></div>
-            <div className="text-[11px] text-right leading-tight hidden lg:block">
-              <div className="font-semibold text-stone-900">Anakapalli, AP</div>
-              <div className="text-stone-500 lowercase">projects@ominfra.com</div>
-            </div>
+            <a
+              href="#contact"
+              className="px-5 py-2.5 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-widest hover:bg-gold-500 transition-all whitespace-nowrap"
+            >
+              Get Quote
+            </a>
           </nav>
 
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden text-stone-900 p-2"
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden text-white p-2 -mr-1 touch-manipulation"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav Overlay */}
-      {isMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 w-full bg-white border-b border-stone-100 shadow-2xl p-8"
-        >
-          <div className="flex flex-col gap-6 items-center text-center">
-            {navLinks.map((link) => (
+      {/* Mobile Nav Drawer */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden bg-black border-b border-white/10"
+          >
+            <div className="px-4 py-6 flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="py-3 px-4 text-sm font-bold text-stone-200 uppercase tracking-widest hover:text-gold-400 hover:bg-white/5 transition-colors rounded-sm border-b border-white/5 last:border-0"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              ))}
               <a
-                key={link.name}
-                href={link.href}
-                className="text-lg font-bold text-stone-800 uppercase tracking-widest hover:text-gold-500"
+                href="#contact"
+                className="mt-3 py-4 bg-gold-400 text-black font-bold uppercase tracking-widest text-sm text-center hover:bg-gold-500 transition-all active:scale-[0.98]"
                 onClick={() => setIsMenuOpen(false)}
               >
-                {link.name}
+                Get a Quote
               </a>
-            ))}
-            <a 
-              href="#contact" 
-              className="w-full py-4 gold-gradient text-white rounded-sm font-bold uppercase tracking-widest shadow-lg"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Get a Quote
-            </a>
-          </div>
-        </motion.div>
-      )}
+              {/* Mobile contact info */}
+              <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
+                <p className="text-[10px] text-stone-500 flex items-center gap-2">
+                  <Phone size={10} className="text-gold-400" /> +91 7661056224 · +91 7816099379
+                </p>
+                <p className="text-[10px] text-stone-500 flex items-center gap-2">
+                  <Mail size={10} className="text-gold-400" /> ominfraprojects0@gmail.com
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

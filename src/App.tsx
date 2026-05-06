@@ -1,25 +1,30 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Services from './components/Services';
 import About from './components/About';
-import ValueProposition from './components/ValueProposition';
 import Process from './components/Process';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
+import WhyChooseUs from './components/WhyChooseUs';
+import Services from './components/Services';
+import ValueProposition from './components/ValueProposition';
 import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-beige-50">
+    <div className="min-h-screen bg-black">
       <Header />
       <main>
+        {/* ── TOP SECTIONS (right below hero) ── */}
         <Hero />
         <About />
-        <Services />
         <Process />
-        <ValueProposition />
         <Portfolio />
         <Contact />
+
+        {/* ── BOTTOM SECTIONS ── */}
+        <WhyChooseUs />
+        <Services />
+        <ValueProposition />
       </main>
       <Footer />
     </div>
