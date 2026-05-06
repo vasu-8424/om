@@ -59,22 +59,40 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Stats bar — scrollable on mobile */}
-      <div className="absolute bottom-0 left-0 w-full border-t border-white/10 bg-black/75 backdrop-blur-md z-10">
-        <div className="max-w-7xl mx-auto px-0 flex overflow-x-auto scrollbar-none">
+      {/* Stats bar — fixed width per item, never merges on any screen */}
+      <div className="absolute bottom-0 left-0 w-full border-t border-white/10 bg-black/75 backdrop-blur-md z-10 overflow-hidden">
+        <div
+          style={{
+            display: 'flex',
+            overflowX: 'auto',
+            scrollbarWidth: 'none',
+            WebkitOverflowScrolling: 'touch',
+          }}
+        >
           {[
             { label: 'Homes Under Execution', value: '49+' },
             { label: 'Govt Projects Delivered', value: '₹1 Cr+' },
             { label: 'Standard Execution', value: 'MES' },
             { label: 'Quality Commitment', value: '100%' },
-            { label: 'Established', value: 'Since 2023' }
+            { label: 'Established', value: 'Since 2023' },
           ].map((stat, i) => (
             <div
               key={stat.label}
-              className={`py-4 px-4 sm:px-6 flex-1 min-w-[80px] text-center flex-shrink-0 ${i !== 4 ? 'border-r border-white/10' : ''}`}
+              style={{
+                width: '140px',
+                flexShrink: 0,
+                flexGrow: 0,
+                padding: '14px 12px',
+                textAlign: 'center',
+                borderRight: i !== 4 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+              }}
             >
-              <div className="text-base sm:text-lg font-serif text-gold-400 mb-0.5 whitespace-nowrap">{stat.value}</div>
-              <div className="text-[7px] sm:text-[8px] uppercase tracking-[0.15em] font-bold text-stone-500 whitespace-nowrap">{stat.label}</div>
+              <div style={{ fontSize: '16px', fontFamily: 'serif', color: '#c9a84c', marginBottom: '3px', whiteSpace: 'nowrap' }}>
+                {stat.value}
+              </div>
+              <div style={{ fontSize: '7px', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700, color: '#6b7280', whiteSpace: 'nowrap' }}>
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

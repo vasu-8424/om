@@ -1,12 +1,12 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
+import CompanyOverview from './components/CompanyOverview';
+import Services from './components/Services';
 import Process from './components/Process';
+import WhyChooseUs from './components/WhyChooseUs';
+import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
-import WhyChooseUs from './components/WhyChooseUs';
-import Services from './components/Services';
-import ValueProposition from './components/ValueProposition';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -14,19 +14,14 @@ export default function App() {
     <div className="min-h-screen bg-black">
       <Header />
       <main>
-        {/* ── TOP SECTIONS (right below hero) ── */}
         <Hero />
-        <Process />
-        <Portfolio />
-        <Contact />
-
-        {/* ── BOTTOM SECTIONS ── */}
-        <WhyChooseUs />
-        <Services />
-        <ValueProposition />
-
-        {/* ── OUR TEAM — bottom of site ── */}
-        <About />
+        <CompanyOverview />  {/* About Us / Mission & Vision */}
+        <Services />         {/* Our Expertise */}
+        <Process />          {/* Our Workflow */}
+        <WhyChooseUs />      {/* Why Choose Us */}
+        <About />            {/* Our Leadership & Team */}
+        <Portfolio />        {/* Gallery / Projects */}
+        <Contact />          {/* Connect With Us */}
       </main>
       <Footer />
     </div>
