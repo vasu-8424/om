@@ -49,6 +49,12 @@ const operations = [
       'Directs process improvement and execution efficiency across active sites. Ensures high standards of quality control are maintained through structured supervision and systematic workflow management.',
   },
   {
+    name: 'Dinesh',
+    role: 'QA/QC Incharge',
+    description:
+      'Responsible for implementing rigorous Quality Assurance and Quality Control protocols across all project phases — ensuring every deliverable meets the highest standards of structural integrity and compliance.',
+  },
+  {
     name: 'Shashidhar',
     role: 'Resource & Workforce Coordinator',
     description:
@@ -141,7 +147,7 @@ const AboutSection = () => {
               <h4 className="font-serif text-lg italic text-stone-100">Operations Backbone</h4>
               <span className="text-[9px] font-bold text-gold-400 uppercase tracking-[0.3em]">Execution & Logistics</span>
             </div>
-            <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+            <div className="grid md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
               {operations.map((op, i) => (
                 <motion.div
                   key={op.name}

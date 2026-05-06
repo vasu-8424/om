@@ -2,17 +2,14 @@ import { motion } from 'motion/react';
 
 const pillars = [
   {
-    icon: '🏗️',
     title: 'Our Mission',
     body: 'To deliver high-quality residential and government infrastructure projects with precision, reliability, and engineering excellence — ensuring every structure stands strong for generations.',
   },
   {
-    icon: '🎯',
     title: 'Our Vision',
     body: 'To be the most trusted construction partner in the region, recognised for transparent execution, timely delivery, and unwavering commitment to structural durability.',
   },
   {
-    icon: '⚙️',
     title: 'Our Commitment',
     body: 'Strict quality and durability standards on every project — from 49+ homes and CC roads to MES-standard government works — delivered on time, every time.',
   },
@@ -61,7 +58,6 @@ const CompanyOverview = () => {
               transition={{ delay: i * 0.1, duration: 0.55 }}
               className="p-6 border border-white/10 hover:border-gold-400/40 transition-colors bg-white/[0.02] group"
             >
-              <div className="text-2xl mb-4">{p.icon}</div>
               <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold-400 mb-3">
                 {p.title}
               </h3>
