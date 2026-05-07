@@ -28,6 +28,8 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
   }
   body {
     @apply bg-black text-stone-100 antialiased selection:bg-gold-400 selection:text-black;

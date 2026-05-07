@@ -5,6 +5,7 @@ const leadership = [
     name: 'Varun Sinisetty',
     role: 'Founder & Operations Head',
     credentials: 'BITS Pilani',
+    image: '/varun.jpg',
     description:
       'Drives the overall vision and execution strategy of OM Infra Projects with a hands-on approach. Directly oversees project planning, site execution, and client coordination — ensuring every commitment is met with precision and accountability.',
   },
@@ -12,6 +13,7 @@ const leadership = [
     name: 'Sreenivasa Rao',
     role: 'Projects & Operations Manager',
     credentials: 'Senior Contractor — 20+ Years in Civil Construction',
+    image: '/sreenivasa.jpg',
     description:
       'Brings deep, field-tested expertise in large-scale civil project execution. Manages workforce deployment, site logistics, and multi-phase project operations — the cornerstone of on-ground reliability for every OM Infra site.',
   },
@@ -98,16 +100,28 @@ const AboutSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="p-6 border border-white/10 hover:border-gold-400/40 transition-colors bg-white/[0.02] group"
+                  className="p-6 border border-white/10 hover:border-gold-400/40 transition-colors bg-white/[0.02] group flex flex-col"
                 >
-                  <div className="flex items-start justify-between gap-2 mb-1">
-                    <h3 className="text-sm font-bold text-stone-100 tracking-widest uppercase">{member.name}</h3>
-                    <span className="text-[8px] font-bold text-gold-400 uppercase tracking-widest whitespace-nowrap mt-0.5">Leadership</span>
+                  <div className="flex items-center gap-4 mb-5">
+                    {member.image && (
+                      <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 overflow-hidden bg-white/5 border border-white/20 rounded-full relative shadow-lg">
+                        <img 
+                          src={member.image} 
+                          alt={member.name} 
+                          className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out group-hover:scale-110"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-sm font-bold text-stone-100 tracking-widest uppercase mb-1">{member.name}</h3>
+                      <div className="text-[10px] text-gold-400/80 uppercase tracking-[0.15em] font-medium">{member.role}</div>
+                    </div>
                   </div>
-                  <div className="text-[10px] text-gold-400/80 uppercase tracking-[0.15em] font-medium mb-1">{member.role}</div>
-                  <div className="text-[9px] text-stone-500 uppercase tracking-widest mb-4">{member.credentials}</div>
-                  <div className="pt-3 border-t border-white/10">
-                    <p className="text-[10px] text-stone-400 leading-relaxed">{member.description}</p>
+                  <div className="flex flex-col flex-grow">
+                    <div className="text-[9px] text-stone-500 uppercase tracking-widest mb-4">{member.credentials}</div>
+                    <div className="pt-3 border-t border-white/10 mt-auto">
+                      <p className="text-[10px] text-stone-400 leading-relaxed">{member.description}</p>
+                    </div>
                   </div>
                 </motion.div>
               ))}

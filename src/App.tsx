@@ -8,11 +8,13 @@ import About from './components/About';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import OverviewModal from './components/OverviewModal';
 
 export default function App() {
   return (
     <div className="min-h-screen bg-black">
       <Header />
+      <OverviewModal />
       <main>
         <Hero />
         <CompanyOverview />  {/* About Us / Mission & Vision */}
