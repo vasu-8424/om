@@ -44,24 +44,33 @@ const Header = () => {
     if (href.startsWith('#')) {
       e.preventDefault();
       
-      if (href === '#') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        window.history.pushState('', document.title, window.location.pathname + window.location.search);
-      } else {
-        const element = document.querySelector(href);
-        if (element) {
-          const headerOffset = 90; // Adjust for fixed header
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const scrollAction = () => {
+        if (href === '#') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.history.pushState('', document.title, window.location.pathname + window.location.search);
+        } else {
+          const element = document.querySelector(href);
+          if (element) {
+            const headerOffset = 90; // Adjust for fixed header
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-          window.history.pushState('', document.title, window.location.pathname + href);
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            window.history.pushState('', document.title, window.location.pathname + href);
+          }
         }
+      };
+
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+        // Wait for menu exit animation (0.25s) to complete to avoid mobile lag
+        setTimeout(scrollAction, 260);
+      } else {
+        scrollAction();
       }
-      setIsMenuOpen(false);
     }
   };
 
