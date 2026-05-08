@@ -34,6 +34,37 @@ const Header = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Let Overview modal handle its own native hash change
+    if (href === '#overview') {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      
+      if (href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.pushState('', document.title, window.location.pathname + window.location.search);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          const headerOffset = 90; // Adjust for fixed header
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          window.history.pushState('', document.title, window.location.pathname + href);
+        }
+      }
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/96 backdrop-blur-md py-1.5 shadow-lg border-b border-white/10' : 'bg-black py-2'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -80,6 +111,7 @@ const Header = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-[10px] font-semibold tracking-[0.18em] uppercase text-stone-400 hover:text-gold-400 transition-colors whitespace-nowrap"
               >
                 {link.name}
@@ -87,6 +119,7 @@ const Header = () => {
             ))}
             <a
               href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="px-5 py-2.5 bg-gold-400 text-black text-[10px] font-bold uppercase tracking-widest hover:bg-gold-500 transition-all whitespace-nowrap"
             >
               Get Quote
@@ -120,7 +153,7 @@ const Header = () => {
                   key={link.name}
                   href={link.href}
                   className="py-3 px-4 text-sm font-bold text-stone-200 uppercase tracking-widest hover:text-gold-400 hover:bg-white/5 transition-colors rounded-sm border-b border-white/5 last:border-0"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.name}
                 </a>
@@ -128,7 +161,7 @@ const Header = () => {
               <a
                 href="#contact"
                 className="mt-3 py-4 bg-gold-400 text-black font-bold uppercase tracking-widest text-sm text-center hover:bg-gold-500 transition-all active:scale-[0.98]"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, '#contact')}
               >
                 Get a Quote
               </a>

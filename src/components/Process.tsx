@@ -10,7 +10,7 @@ const processSteps = [
 
 const Process = () => {
   return (
-    <section className="py-14 sm:py-16 bg-stone-950 border-b border-white/10 text-white">
+    <section id="process" className="py-14 sm:py-16 bg-stone-950 border-b border-white/10 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
         {/* Header */}

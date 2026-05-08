@@ -5,6 +5,30 @@ const InstagramIcon = ({ size = 16 }: { size?: number }) => (
 );
 
 const Footer = () => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      
+      if (href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.pushState('', document.title, window.location.pathname + window.location.search);
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          const headerOffset = 90; // Adjust for fixed header
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+          window.history.pushState('', document.title, window.location.pathname + href);
+        }
+      }
+    }
+  };
+
   return (
     <footer className="bg-black text-stone-100 pt-10 sm:pt-12 pb-6 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
@@ -27,12 +51,12 @@ const Footer = () => {
                 { label: 'Home',     href: '#' },
                 { label: 'Workflow', href: '#process' },
                 { label: 'Expertise',href: '#services' },
-                { label: 'Our Team', href: '#about' },
+                { label: 'Our Team', href: '#team' },
                 { label: 'Projects', href: '#portfolio' },
                 { label: 'Contact',  href: '#contact' },
               ].map(link => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-[10px] font-medium tracking-widest uppercase text-stone-500 hover:text-gold-400 transition-colors">
+                  <a href={link.href} onClick={(e) => handleNavClick(e, link.href)} className="text-[10px] font-medium tracking-widest uppercase text-stone-500 hover:text-gold-400 transition-colors">
                     {link.label}
                   </a>
                 </li>
@@ -53,7 +77,8 @@ const Footer = () => {
               ].map(name => (
                 <li key={name}>
                   <a
-                    href="#about"
+                    href="#team"
+                    onClick={(e) => handleNavClick(e, '#team')}
                     className="text-[10px] font-medium tracking-widest uppercase text-stone-500 hover:text-gold-400 transition-colors"
                   >
                     {name}
@@ -112,8 +137,8 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex gap-6">
-            <a href="#" className="text-[9px] font-bold text-stone-600 uppercase tracking-widest hover:text-gold-400 transition-colors">Privacy</a>
-            <a href="#" className="text-[9px] font-bold text-stone-600 uppercase tracking-widest hover:text-gold-400 transition-colors">Terms</a>
+            <a href="#" onClick={(e) => handleNavClick(e, '#')} className="text-[9px] font-bold text-stone-600 uppercase tracking-widest hover:text-gold-400 transition-colors">Privacy</a>
+            <a href="#" onClick={(e) => handleNavClick(e, '#')} className="text-[9px] font-bold text-stone-600 uppercase tracking-widest hover:text-gold-400 transition-colors">Terms</a>
           </div>
         </div>
 

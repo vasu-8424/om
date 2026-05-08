@@ -72,7 +72,7 @@ const operations = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="bg-black border-b border-white/10">
+    <section id="team" className="bg-black border-b border-white/10">
       <div className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
